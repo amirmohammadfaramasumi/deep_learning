@@ -1,0 +1,18 @@
+import torch
+
+# Set the seed for reproducibility
+torch.manual_seed(99121069)
+
+# Generate a vector of 10,000 random integers between 0 and 20 (inclusive)
+vector = torch.randint(0, 21, (10000,))
+
+# Initialize a dictionary to count occurrences of each integer
+counts = {i: 0 for i in range(21)}
+
+# Count the occurrences of each integer in the vector
+for num in vector:
+    counts[int(num)] += 1
+
+# Print the counts
+for num, count in counts.items():
+    print(f"Number {num}: {count} times")
