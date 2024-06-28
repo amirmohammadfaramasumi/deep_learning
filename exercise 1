@@ -1,0 +1,27 @@
+import torch
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = torch.linspace(0, 2 * torch.pi, 1000)
+
+# Compute the values of sin(x) and cos(x)
+y_sin = torch.sin(x)
+y_cos = torch.cos(x)
+
+# Convert values to numpy for plotting
+x_np = x.numpy()
+y_sin_np = y_sin.numpy()
+y_cos_np = y_cos.numpy()
+
+plt.plot(x_np, y_sin_np, label='sin(x)')
+plt.plot(x_np, y_cos_np, label='cos(x)')          
+
+plt.fill_between(x_np, y_sin_np, y_cos_np, where=(y_sin_np > y_cos_np), interpolate=True, color='red', alpha=0.3, hatch='/')
+plt.fill_between(x_np, y_sin_np, y_cos_np, where=(y_sin_np <= y_cos_np), interpolate=True, color='blue', alpha=0.3, hatch='\\')
+
+plt.title('Area between sin(x) and cos(x)')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+
+plt.show()
